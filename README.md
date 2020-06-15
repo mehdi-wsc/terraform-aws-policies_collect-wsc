@@ -39,7 +39,8 @@ data "aws_iam_policy_document" "base" {
 }
 
 module "sg-wsc" {
-  source  = "mehdi-wsc/iam-ws/aws"
+
+  source  = "mehdi-wsc/policies_collect-wsc/aws"
   version = "0.0.1"
     policies_documents = [
     data.aws_iam_policy_document.base.json,

@@ -30,8 +30,9 @@ data "aws_iam_policy_document" "base" {
   }
 }
 module "aggregated_policy" {
-  source  = "mehdi-wsc/iam-ws/aws"
+ source  = "mehdi-wsc/policies_collect-wsc/aws"
   version = "0.0.1"
+
   policies_documents = [
     data.aws_iam_policy_document.base.json,
     data.aws_iam_policy_document.resource_full_access.json
@@ -40,3 +41,6 @@ module "aggregated_policy" {
 output "doc" {
   value = module.aggregated_policy.policies_result_document
 }
+
+
+
