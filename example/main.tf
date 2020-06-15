@@ -29,51 +29,12 @@ data "aws_iam_policy_document" "base" {
     ]
   }
 }
-data "aws_iam_policy_document" "base_f" {
-  statement {
-    sid       = "BaseAccessf"
-    effect    = "Allow"
-    resources = ["*"]
-
-    actions = [
-      "s3:ListBucket",
-      "s3:ListBucketVersions"
-    ]
-  }
-}
-data "aws_iam_policy_document" "base_s" {
-  statement {
-    sid       = "BaseAccesss"
-    effect    = "Allow"
-    resources = ["*"]
-
-    actions = [
-      "s3:ListBucket",
-      "s3:ListBucketVersions"
-    ]
-  }
-}
-data "aws_iam_policy_document" "base_th" {
-  statement {
-    sid       = "BaseAccessth"
-    effect    = "Allow"
-    resources = ["*"]
-
-    actions = [
-      "s3:ListBucket",
-      "s3:ListBucketVersions"
-    ]
-  }
-}
 module "aggregated_policy" {
-  source = "../"
-
+  source  = "mehdi-wsc/iam-ws/aws"
+  version = "0.0.1"
   policies_documents = [
     data.aws_iam_policy_document.base.json,
-    data.aws_iam_policy_document.resource_full_access.json,
-    data.aws_iam_policy_document.base_f.json,
-    data.aws_iam_policy_document.base_s.json,
-    data.aws_iam_policy_document.base_th.json
+    data.aws_iam_policy_document.resource_full_access.json
   ]
 }
 output "doc" {
