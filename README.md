@@ -6,6 +6,7 @@
 ## Usage
 
 ```
+# First policy 
 data "aws_iam_policy_document" "resource_full_access" {
   statement {
     sid       = "FullAccess"
@@ -24,7 +25,7 @@ data "aws_iam_policy_document" "resource_full_access" {
     ]
   }
 }
-
+# Second Policy 
 data "aws_iam_policy_document" "base" {
   statement {
     sid       = "BaseAccess"
@@ -43,7 +44,7 @@ module "final_document" {
   source  = "mehdi-wsc/policies_collect-wsc/aws"
   version = "0.0.1"
   # the resut will be one document with two policies 
-    policies_documents = [
+  policies_documents = [
     data.aws_iam_policy_document.base.json,
     data.aws_iam_policy_document.resource_full_access.json
   ]
