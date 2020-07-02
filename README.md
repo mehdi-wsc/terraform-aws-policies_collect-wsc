@@ -43,7 +43,7 @@ module "final_document" {
 
   source  = "mehdi-wsc/policies_collect-wsc/aws"
   version = "0.0.1"
-  # the resut will be one document with two policies 
+  # the result will be one document with two policies 
   policies_documents = [
     data.aws_iam_policy_document.base.json,
     data.aws_iam_policy_document.resource_full_access.json
