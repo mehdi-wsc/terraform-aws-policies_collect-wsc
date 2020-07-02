@@ -1,4 +1,4 @@
-# terraform-aws-iam
+# terraform-aws-policies_collect-wsc
 
 - ``` terraform-aws-policies_collect-wsc  ``` is a Terraform module to generate json document.
 - it's an opensource module under GPL license
@@ -38,10 +38,11 @@ data "aws_iam_policy_document" "base" {
   }
 }
 
-module "sg-wsc" {
+module "final_document" {
 
   source  = "mehdi-wsc/policies_collect-wsc/aws"
   version = "0.0.1"
+  # the resut will be one document with two policies 
     policies_documents = [
     data.aws_iam_policy_document.base.json,
     data.aws_iam_policy_document.resource_full_access.json
